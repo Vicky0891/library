@@ -5,9 +5,9 @@
 *.zip
 *.class
 *.log
+*.properties
 .classpath
 .project
-.properties
 bin/
 target/
 logs/
