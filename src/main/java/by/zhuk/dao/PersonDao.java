@@ -1,6 +1,7 @@
 package by.zhuk.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -21,6 +22,11 @@ public class PersonDao {
 	public Person show(int id) {
 		return jdbcTemplate.query("SELECT * FROM person WHERE person_id=?", new Object[] { id },
 				new BeanPropertyRowMapper<>(Person.class)).stream().findAny().orElse(null);
+	}
+	
+	public Optional<Person> show(String fullName) {
+		return jdbcTemplate.query("SELECT * FROM person WHERE full_name=?", new Object[] { fullName },
+				new BeanPropertyRowMapper<>(Person.class)).stream().findAny();
 	}
 
 	public List<Person> index() {
