@@ -1,4 +1,4 @@
-package by.vicky.dao;
+package by.zhuk.dao;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import by.vicky.models.Book;
+import by.zhuk.models.Book;
 
 @Component
 public class BookDao {
@@ -19,10 +19,10 @@ public class BookDao {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-	public Optional<Book> show(int id) {
+	public Book show(int id) {
 		return jdbcTemplate
 				.query("SELECT * FROM book WHERE id=?", new Object[] { id }, new BeanPropertyRowMapper<>(Book.class))
-				.stream().findAny();
+				.stream().findAny().orElse(null);
 	}
 
 	public List<Book> index() {

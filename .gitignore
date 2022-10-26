@@ -6,6 +6,7 @@
 *.class
 *.log
 *.properties
+*.sql
 .classpath
 .project
 bin/

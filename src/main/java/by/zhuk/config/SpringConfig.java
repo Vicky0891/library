@@ -1,4 +1,4 @@
-package by.vicky.config;
+package by.zhuk.config;
 
 import java.util.Objects;
 
@@ -21,7 +21,7 @@ import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
 @Configuration
-@ComponentScan("by.vicky")
+@ComponentScan("by.zhuk")
 @EnableWebMvc
 @PropertySource("classpath:database.properties")
 public class SpringConfig implements WebMvcConfigurer {

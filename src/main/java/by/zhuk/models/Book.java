@@ -1,4 +1,4 @@
-package by.vicky.models;
+package by.zhuk.models;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;

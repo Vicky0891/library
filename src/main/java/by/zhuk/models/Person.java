@@ -1,4 +1,4 @@
-package by.vicky.models;
+package by.zhuk.models;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
@@ -14,6 +14,8 @@ public class Person {
 
 	@Max(value = 2010, message = "Year should be more than 2010")
 	private int yearOfBirth;
+	
+	public Person() {}
 
 	public Person(int id, String fullName, int yearOfBirth) {
 		this.id = id;

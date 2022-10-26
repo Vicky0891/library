@@ -1,4 +1,4 @@
-package by.vicky.config;
+package by.zhuk.config;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
