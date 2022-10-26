@@ -1,0 +1,15 @@
+# Eclipse files:
+*.jar
+*.war
+*.rar
+*.zip
+*.class
+*.log
+.classpath
+.project
+.properties
+bin/
+target/
+logs/
+.settings/
+scripts/
