@@ -7,6 +7,8 @@ public class Book {
 
 	private int id;
 
+	private int personId;
+
 	@NotEmpty(message = "Name should not be empty")
 	private String name;
 
@@ -17,11 +19,12 @@ public class Book {
 	@Size(min = 4, max = 4)
 	private int year;
 
-	public Book(int id, String name, String author, int year) {
+	public Book(int id, String name, String author, int year, int personId) {
 		this.id = id;
 		this.name = name;
 		this.author = author;
 		this.year = year;
+		this.personId = personId;
 	}
 
 	public String getName() {
@@ -54,6 +57,14 @@ public class Book {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public int getPersonId() {
+		return personId;
+	}
+
+	public void setPersonId(int personId) {
+		this.personId = personId;
 	}
 
 }

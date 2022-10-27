@@ -1,5 +1,7 @@
 package by.zhuk.models;
 
+import java.util.List;
+
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -14,13 +16,17 @@ public class Person {
 
 	@Max(value = 2010, message = "Year should be more than 2010")
 	private int yearOfBirth;
-	
-	public Person() {}
 
-	public Person(int id, String fullName, int yearOfBirth) {
+	private List<Book> books;
+
+	public Person() {
+	}
+
+	public Person(int id, String fullName, int yearOfBirth, List<Book> books) {
 		this.id = id;
 		this.fullName = fullName;
 		this.yearOfBirth = yearOfBirth;
+		this.books = books;
 	}
 
 	public String getFullName() {
@@ -45,6 +51,14 @@ public class Person {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public List<Book> getBooks() {
+		return books;
+	}
+
+	public void setBooks(List<Book> books) {
+		this.books = books;
 	}
 
 }
