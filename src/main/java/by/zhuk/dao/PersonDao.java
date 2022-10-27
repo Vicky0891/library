@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import by.zhuk.models.Book;
 import by.zhuk.models.Person;
 
 @Component
@@ -20,9 +21,15 @@ public class PersonDao {
 	}
 
 	public Person show(int id) {
-		return jdbcTemplate.query("SELECT * FROM person WHERE person_id=?", new Object[] { id },
-				new BeanPropertyRowMapper<>(Person.class)).stream().findAny().orElse(null);
+		return jdbcTemplate.query("SELECT * FROM person WHERE id=?",
+				new Object[] { id }, new BeanPropertyRowMapper<>(Person.class)).stream().findAny().orElse(null);
 	}
+
+	public List<Book> showBooks(int id) {
+		return jdbcTemplate.query("SELECT * FROM person p JOIN book b ON p.id=b.person_id WHERE p.id=?", new Object[] { id },
+				 new BeanPropertyRowMapper<>(Book.class)).stream().toList();
+	}	
+	
 	
 	public Optional<Person> show(String fullName) {
 		return jdbcTemplate.query("SELECT * FROM person WHERE full_name=?", new Object[] { fullName },
@@ -39,12 +46,12 @@ public class PersonDao {
 	}
 
 	public void update(int id, Person updatedPerson) {
-		jdbcTemplate.update("UPDATE person SET full_name=?, year_of_birth=? WHERE person_id=?", updatedPerson.getFullName(),
-				updatedPerson.getYearOfBirth(), id);
+		jdbcTemplate.update("UPDATE person SET full_name=?, year_of_birth=? WHERE id=?",
+				updatedPerson.getFullName(), updatedPerson.getYearOfBirth(), id);
 	}
 
 	public void delete(int id) {
-		jdbcTemplate.update("DELETE FROM person WHERE person_id=?", id);
+		jdbcTemplate.update("DELETE FROM person WHERE id=?", id);
 	}
 
 }
