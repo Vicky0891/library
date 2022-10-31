@@ -5,21 +5,24 @@
 <title>Person</title>
 </head>
 <body>
-<p th:text="${person.getFullName() + ', ' + person.getYearOfBirth()}">VALUE</p>
+	<p th:text="${person.getFullName() + ', ' + person.getYearOfBirth()}">VALUE</p>
 
-<p th:if="${books.size() > 0}"> 
-<p>Books: </p> 
-<p th:each="book : ${books}" 
-th:text="${book.getName() + ', ' + book.getAuthor() + ', ' + book.getYear()}">book</p>
-
-<p th:if="${books.size() == 0}" th:text="Person didn't take any books"/>
-
-<hr/>
-<form th:method="PATCH" th:action="@{/people/{id}(id=${person.getId()})}">
-<input type="submit" value="Edit"/>
-</form>
-<form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
-<input type="submit" value="Delete"/>
-</form>
+	<div th:if="${books.size() > 0}">
+		<p>Books:</p>
+		<p th:each="book : ${books}"
+			th:text="${book.getName() + ', ' + book.getAuthor() + ', ' + book.getYear()}">book</p>
+	</div>
+	<div th:if="${books.size() == 0}">
+		<p>Person didn't take any books</p>
+	</div>
+	<hr />
+	<form th:method="GET"
+		th:action="@{/people/{id}/edit(id=${person.getId()})}">
+		<input type="submit" value="Edit" />
+	</form>
+	<form th:method="DELETE"
+		th:action="@{/people/{id}(id=${person.getId()})}">
+		<input type="submit" value="Delete" />
+	</form>
 </body>
 </html>

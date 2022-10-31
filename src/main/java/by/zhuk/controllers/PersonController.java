@@ -22,7 +22,7 @@ import by.zhuk.utils.PersonValidator;
 @RequestMapping("/people")
 public class PersonController {
 
-	private PersonDao personDao;
+	private final PersonDao personDao;
 	private final PersonValidator personValidator;
 
 	@Autowired
